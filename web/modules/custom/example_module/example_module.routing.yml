@@ -1,7 +1,47 @@
 example_module.example_module_form:
-  path: '/example_module/form'
+  path: "/example_module/form"
   defaults:
     _form: '\Drupal\example_module\Form\ExampleModuleForm'
-    _title: 'ExampleModuleForm'
+    _title: "ExampleModuleForm"
   requirements:
-    _access: 'TRUE'
+    _access: "TRUE"
+
+example_module.rest_controller_get:
+  path: "/example-crud/data"
+  defaults:
+    _controller: '\Drupal\example_module\Controller\RestController::get'
+    _title: "get"
+  requirements:
+    _permission: "access content"
+  methods:
+    - GET
+
+example_module.rest_controller_post:
+  path: "/example-crud/data"
+  defaults:
+    _controller: '\Drupal\example_module\Controller\RestController::post'
+    _title: "post"
+  requirements:
+    _permission: "access content"
+  methods:
+    - POST
+
+example_module.rest_controller_put:
+  path: "/example-crud/data/{id}"
+  defaults:
+    _controller: '\Drupal\example_module\Controller\RestController::put'
+    _title: "put"
+  requirements:
+    _permission: "access content"
+  methods:
+    - PUT
+
+example_module.rest_controller_delete:
+  path: "/example-crud/data/{id}"
+  defaults:
+    _controller: '\Drupal\example_module\Controller\RestController::delete'
+    _title: "delete"
+  requirements:
+    _permission: "access content"
+  methods:
+    - DELETE
