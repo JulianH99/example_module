@@ -1,0 +1,6 @@
+bootstrap:
+  version: VERSION
+  css:
+    theme:
+      https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css:
+        { type: external }

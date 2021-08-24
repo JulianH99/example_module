@@ -1,0 +1,40 @@
+<pre>
+{{dump(form|keys)}}
+</pre>
+
+<div class="row">
+	<div class="col-12">
+
+		<div class="row">
+			<div class="col-6">
+				{{form.nombre | render}}
+			</div>
+			<div class="col-6">
+				{{form.identificacion | render}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				{{form.fecha_nacimiento | render}}
+			</div>
+			<div class="col-6">
+				{{form.cargo | render}}
+			</div>
+		</div>
+
+
+		{{form.form_build_id | render}}
+		{{form.form_token | render}}
+		{{form.form_id | render}}
+
+		<div class="row">
+			<div class="col-12">
+				{{form.submit | render}}
+
+			</div>
+		</div>
+
+	</div>
+
+
+</div>

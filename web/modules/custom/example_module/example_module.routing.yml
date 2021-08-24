@@ -1,0 +1,7 @@
+example_module.example_module_form:
+  path: '/example_module/form'
+  defaults:
+    _form: '\Drupal\example_module\Form\ExampleModuleForm'
+    _title: 'ExampleModuleForm'
+  requirements:
+    _access: 'TRUE'
