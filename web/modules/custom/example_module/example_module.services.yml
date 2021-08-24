@@ -1,0 +1,7 @@
+services:
+  logger.channel.example_module:
+    parent: logger.channel_base
+    arguments: ['example_module']
+  example_module.data:
+    class: Drupal\example_module\DataService
+    arguments: []

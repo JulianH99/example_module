@@ -45,7 +45,7 @@ class ExampleModuleForm extends FormBase
       '#title' => $this->t('Fecha de nacimiento'),
       '#description' => $this->t('Fecha de nacimiento en formato \'dia-mes-año\'. Ej: 24-11-1999'),
       '#weight' => '0',
-      '#format' => 'd-M-Y'
+      '#format' => 'd-M-Y',
     ];
     $form['cargo'] = [
       '#type' => 'select',
@@ -53,6 +53,7 @@ class ExampleModuleForm extends FormBase
       '#description' => $this->t('Cargo del usuario'),
       '#size' => 5,
       '#weight' => '0',
+      '#required' => TRUE,
       '#options' => [
         'administrador' => 'Administrador',
         'webmaster' => 'Webmaster',
@@ -75,6 +76,8 @@ class ExampleModuleForm extends FormBase
 
     $values = $form_state->getValues();
 
+    $data_service = \Drupal::service('example_module.data');
+
     if (!$values['nombre']) {
       $form_state->setErrorByName('nombre', 'El nombre es un campo requerido');
     }
@@ -82,6 +85,18 @@ class ExampleModuleForm extends FormBase
     if (!$values['identificacion'] || !is_numeric($values['identificacion'])) {
       $form_state->setErrorByName('identificacion', 'Debe ingresar una identificacion válida');
     }
+
+    if (!$data_service->validateId($values['identificacion'])) {
+      $form_state->setErrorByName('identificacion', 'Este número de documento ya se encuentra registrado');
+    }
+
+    if ($values['fecha_nacimiento']) {
+      if (!$data_service->validateBirthDate($values['fecha_nacimiento'])) {
+        $form_state->setErrorByName('fecha_nacimiento',  'Debe ingresar una fecha de nacimiento válida');
+      }
+    }
+
+
     parent::validateForm($form, $form_state);
   }
 
